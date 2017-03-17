@@ -15,6 +15,11 @@ It comes with a easy to use Webinterface for configuring stuff.
 * 3 leds
 * 4 resistors
 
+The system is designed to use multible gsm gateways to use sim cards from different providers.
+So you habe two choises to handle multible gateways you can use a multiplexe to switch the TX,TX lines to the main Serial Port or you add a other USB2Serial adapter. 
+I have used the USB2Serial adapter method because its simply to add, just modify a database table, this will go on the fly
+
+
 
 # TOOLS
 * soldering stuff

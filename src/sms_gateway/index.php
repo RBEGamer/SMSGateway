@@ -125,7 +125,9 @@ function load_all(){
 <br>
 <script language="javascript" type="text/javascript">
 function send_sms(){
-alert("sms registered");
+if(an == "sms_ok"){
+    alert("sms_send");
+}
 /*
 TODO:
 http request to add_message.php
@@ -184,7 +186,32 @@ while($row_dev = mysql_fetch_array($fetchinfo_dev)) {
 
 
 
+<h3> - - MESSAGE QUEUE - -</h3>
+<br>
+<table width='40%'>
+<tr><th>TIME</th><th>TO</th><th>MESSAGE</th>
+<?php
+$fetchinfo_dev = mysql_query("SELECT `message`, `added_time`, recieve_numbers.phonenumber FROM `sms_to_send` INNER JOIN `recieve_numbers` on `recieve_number_id` = recieve_numbers.id;");
+while($row_dev = mysql_fetch_array($fetchinfo_dev)) {
+	echo "<tr><td>".$row_dev['added_time']."</td><td>".$row_dev['phonenumber']."</td><td>".$row_dev['message']."</td></tr>";	
+}
+?>
+</table>
 
+
+
+
+<h3> - -LAST 10 SEND MESSAGES - -</h3>
+<br>
+<table width='40%'>
+<tr><th>TIME</th><th>TO</th><th>MESSAGE</th>
+<?php
+$fetchinfo_dev = mysql_query("SELECT `message`, `send_time`, recieve_numbers.phonenumber FROM `send_sms` INNER JOIN `recieve_numbers` on `recieve_number_id` = recieve_numbers.id LIMIT 10;");
+while($row_dev = mysql_fetch_array($fetchinfo_dev)) {
+	echo "<tr><td>".$row_dev['added_time']."</td><td>".$row_dev['phonenumber']."</td><td>".$row_dev['message']."</td></tr>";	
+}
+?>
+</table>
 
 </div>
 </div>

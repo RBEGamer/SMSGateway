@@ -7,5 +7,5 @@ b) rec number gateway message
 
 
 */
-
+echo "sms_ok";
 ?>
